@@ -38,6 +38,11 @@ func main() {
 		log.Fatalf("Could not open a device: %v", err)
 	}
 	defer dev.Close()
+	err = dev.SetAutoDetach(true)
+	if err != nil {
+		log.Fatalf("%s.DefaultInterface(): %v", dev, err)
+	}
+
 
 	intf, done, err := dev.DefaultInterface()
 	if err != nil {
